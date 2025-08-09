@@ -1,25 +1,18 @@
 # Dockerfile
 FROM nginx:1.27-alpine
 
-# App dir
-WORKDIR /usr/share/nginx/html
-
-# Copy site files (main.html, assets, etc.)
-COPY . .
-
-# Make main.html the landing page
-# (keeps index.html if you already have one)
-RUN [ -f main.html ] && cp -f main.html index.html || true
-
-# Replace the default Nginx vhost
-COPY default.conf /etc/nginx/conf.d/default.conf
-
-# Railway usually injects $PORT, but your panel is set to 8080.
-# We’ll adapt to either (fallback = 8080).
+# Railway usually injects $PORT; default to 8080 for local runs
 ENV PORT=8080
 
-# On start, swap 8080 in the config with $PORT (if Railway sets it),
-# then run Nginx in the foreground.
-CMD sh -c "sed -i \"s/listen 8080;/listen ${PORT};/\" /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+# Put site in nginx web root
+WORKDIR /usr/share/nginx/html
+COPY . .
 
+# If you ship main.html, serve it as the landing page too
+RUN [ -f main.html ] && cp -f main.html index.html || true
+
+# Use nginx's templates feature to render PORT at startup
+COPY default.conf.template /etc/nginx/templates/default.conf.template
+
+# For local docs; Railway ignores EXPOSE but it's nice to have
 EXPOSE 8080
