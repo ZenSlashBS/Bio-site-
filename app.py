@@ -29,4 +29,5 @@ def catch_all(path: str):
     target = WEB_ROOT / path
     if target.exists() and target.is_file():
         return send_from_directory(WEB_ROOT, path)
+    # SPA-style fallback for any route
     return send_index_like()
