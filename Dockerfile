@@ -8,11 +8,11 @@ ENV PORT=8080
 WORKDIR /usr/share/nginx/html
 COPY . .
 
-# If you ship main.html, serve it as the landing page too
+# If you have main.html, make it the landing page
 RUN [ -f main.html ] && cp -f main.html index.html || true
 
-# Use nginx's templates feature to render PORT at startup
-COPY default.conf.template /etc/nginx/templates/default.conf.template
-
-# For local docs; Railway ignores EXPOSE but it's nice to have
+# Expose for local runs (Railway ignores EXPOSE)
 EXPOSE 8080
+
+# At runtime, update nginx to listen on $PORT, then start
+CMD sh -c "sed -ri 's/listen\\s+80;/listen ${PORT};/' /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
