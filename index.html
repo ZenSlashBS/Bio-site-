@@ -5,7 +5,6 @@
   <title>HazexPy</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="shortcut icon" href="x.ico" type="image/x-icon" />
-  <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&family=Titillium+Web:ital@1&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
   <style>
@@ -31,7 +30,6 @@
     .sub-name{color:#fff;font-family:'Titillium Web',sans-serif;font-size:1.05rem;opacity:.85}
     .content{display:flex;padding:1.7rem 2rem 2.2rem 2rem}
     .left{flex:1}
-    .right{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;margin-left:2rem}
     .title{position:relative;font-weight:700;font-size:1.05rem;padding-bottom:4px;margin-bottom:.75rem}
     .title:after{content:"";position:absolute;bottom:0;left:0;width:50%;height:3px;border-radius:2px;background:#fff}
     .text{font-weight:300;line-height:1.7;margin:.2rem 0}
@@ -43,11 +41,9 @@
     .follow{background:#734f96;color:#000}
     .share{border:2px solid #734f96;color:#734f96}
     .share:hover{background:#734f96;color:#000}
-    /* Sidebar quick menu */
     .sidebar{position:absolute;top:52px;left:15px;width:60%;display:none;background:#0005;border:1px solid #00000025;border-radius:10px;backdrop-filter:blur(12px);z-index:10}
     .sidebar a{display:block;padding:10px 15px;text-decoration:none;color:#fff;transition:.2s}
     .sidebar a:hover{transform:scale(1.03)}
-    /* Modal */
     .modal{position:fixed;inset:0;background:#0009;display:none;place-items:center;z-index:20}
     .modal img{max-width:86vw;max-height:86vh;border-radius:10px}
     .close{position:absolute;top:16px;right:16px;width:30px;height:30px;cursor:pointer}
@@ -66,13 +62,11 @@
   <div class="container">
     <input type="checkbox" id="check" hidden>
     <div class="card">
-      <!-- Sidebar -->
       <div class="sidebar" id="sidebar">
         <a href="https://appurl.io/vIRlaiBU8h" target="_blank" rel="noopener">Instagram</a>
         <a href="https://wa.me/+994402638009" target="_blank" rel="noopener">WhatsApp</a>
       </div>
 
-      <!-- Header -->
       <div class="header">
         <label for="check" id="chkbtn">
           <div class="hamburger-menu"><div class="center"></div></div>
@@ -87,15 +81,12 @@
         </div>
       </div>
 
-      <!-- Body -->
       <div class="content">
         <div class="left">
           <div class="about-container">
             <h3 class="title">𝐀𝐁𝐎𝐔𝐓 𝐒𝐈𝐊𝐄𝐍𝐄𝐙</h3>
-            <!-- Requested "Pursuing" font style kept: using bold mathematical letters already in text -->
             <p class="text">✦𝗣𝘂𝗿𝘀𝘂𝗶𝗻𝗴 A Cody Freak | Always Up To Get The Ideas Running ⚡✦</p>
             <p class="text">~ Dᴇᴠ ~</p>
-            <!-- Skills line with JavaScript → Sql DB; same stylized vibe -->
             <p class="text">• Pʏᴛʜᴏɴ | Sǫʟ DB | Hᴛᴍʟ | Css •</p>
           </div>
 
@@ -111,7 +102,6 @@
         </div>
       </div>
 
-      <!-- Modal for avatar -->
       <div class="modal" id="modal">
         <img src="1.jpg" alt="Profile" />
         <div class="close" id="modalClose"></div>
@@ -120,7 +110,6 @@
   </div>
 
   <script>
-    // Sidebar toggle
     const chkbtn = document.getElementById('chkbtn');
     const checkbox = document.getElementById('check');
     const sidebar = document.getElementById('sidebar');
@@ -130,7 +119,6 @@
       sidebar.style.display = show ? 'block' : 'none';
     });
 
-    // Modal
     const modal = document.getElementById('modal');
     const avatar = document.getElementById('avatar');
     const modalClose = document.getElementById('modalClose');
